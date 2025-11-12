@@ -1,0 +1,5 @@
+set(LLVM_TARGET_DEFINITIONS ToyPassDCE.td)
+mlir_tablegen(ToyPassDCE.h.inc -gen-pass-decls)
+add_public_tablegen_target(MLIRToyTransformsDCEIncGen)
+
+add_custom_target(MLIRToyTransformsDCEIncGenHeader DEPENDS MLIRToyIncGen MLIRToyTransformsDCEIncGen)

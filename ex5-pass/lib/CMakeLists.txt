@@ -1,0 +1,1 @@
+add_mlir_library(Toy5 ToyPassDCE.cpp DEPENDS MLIRToyTransformsDCEIncGenHeader)
