@@ -1,0 +1,1 @@
+add_mlir_library(Toy6 ToyPassCVT.cpp DEPENDS MLIRToyTransformsCVTIncGenHeader)
