@@ -1,9 +1,6 @@
 #include "toy/ToyDialect.h"
 #include "toy/ToyOps.h"
 #include <mlir/Dialect/Func/IR/FuncOps.h>
-#include <mlir/Dialect/Tensor/IR/Tensor.h>
-#include <mlir/IR/BuiltinOps.h>
-#include <mlir/IR/BuiltinTypes.h>
 #include <mlir/IR/MLIRContext.h>
 #include <mlir/Pass/Pass.h>
 #include <mlir/Pass/PassManager.h>
@@ -50,8 +47,7 @@ int main(int argc, char **argv) {
   do {
     mlir::PassManager pm(&ctx);
     pm.addNestedPass<mlir::func::FuncOp>(mlir::createCanonicalizerPass());
-    assert(llvm::succeeded(pm.run(mod)));
+    assert(mlir::succeeded(pm.run(mod)));
   } while (0);
-
   mod->dump();
 }
