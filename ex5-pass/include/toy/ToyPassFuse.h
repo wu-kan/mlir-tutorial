@@ -8,12 +8,12 @@
 
 namespace toy {
 
-std::unique_ptr<mlir::Pass> createDCEPass();
+std::unique_ptr<mlir::Pass> createFusePass();
 
 #define GEN_PASS_DECL
-#include "toy/ToyPassDCE.h.inc"
+#include "toy/ToyPassFuse.h.inc"
 
 #define GEN_PASS_REGISTRATION
-#include "toy/ToyPassDCE.h.inc"
+#include "toy/ToyPassFuse.h.inc"
 
 } // namespace toy
