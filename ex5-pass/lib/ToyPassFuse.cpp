@@ -24,7 +24,7 @@ struct FusePat : mlir::OpRewritePattern<toy::AddOp> {
     auto result = rewriter.create<toy::AddOp>(
         op->getLoc(), inputs.front().getType(), mlir::ValueRange(inputs));
     rewriter.replaceOp(op1, mlir::ValueRange(result));
-    op->erase();
+    // op->erase();
     return mlir::success();
   }
 };
