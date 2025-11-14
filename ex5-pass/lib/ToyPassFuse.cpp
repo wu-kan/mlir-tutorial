@@ -21,10 +21,11 @@ struct FusePat : mlir::OpRewritePattern<toy::AddOp> {
       if (oop != op)
         inputs.push_back(oop);
     }
+    rewriter.setInsertionPoint(op1);
     auto result = rewriter.create<toy::AddOp>(
         op->getLoc(), inputs.front().getType(), mlir::ValueRange(inputs));
     rewriter.replaceOp(op1, mlir::ValueRange(result));
-    // op->erase();
+    op->erase();
     return mlir::success();
   }
 };
