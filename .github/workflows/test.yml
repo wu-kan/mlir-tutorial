@@ -26,7 +26,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:25.04
+      image: ubuntu:25.10
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,8 +38,8 @@ jobs:
           apt-get update -y
           apt-get install --no-install-recommends -y \
             cmake ninja-build zlib1g-dev libzstd-dev \
-            clang-20 llvm-20-dev mlir-20-tools libmlir-20-dev
+            clang-21 llvm-21-dev mlir-21-tools libmlir-21-dev
           find . -type f -exec touch {} + # https://github.com/ninja-build/ninja/issues/1599
-          MLIR_DIR=/usr/lib/llvm-20/lib/cmake/mlir CC=clang-20 CXX=clang++-20 utils/build.sh
+          MLIR_DIR=/usr/lib/llvm-21/lib/cmake/mlir CC=clang-21 CXX=clang++-21 utils/build.sh
           cmake --build Testing -t test
           cat Testing/Testing/Temporary/LastTest.log
